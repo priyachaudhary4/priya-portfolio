@@ -216,15 +216,21 @@ export function HeroSection() {
             className="flex flex-wrap items-center gap-4 mb-8"
           >
             <Button
+              asChild
               className="h-11 px-6 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-medium text-sm shadow-md shadow-blue-500/20 border-none transition-all"
             >
-              View My Work <ArrowRight className="ml-2 w-4 h-4" />
+              <a href="#projects">
+                View My Work <ArrowRight className="ml-2 w-4 h-4" />
+              </a>
             </Button>
             <Button
+              asChild
               variant="outline"
               className="h-11 px-6 rounded-xl border-border bg-background hover:bg-muted text-foreground font-medium text-sm backdrop-blur-md transition-all"
             >
-              <Download className="mr-2 w-4 h-4" /> Download Resume
+              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                <Download className="mr-2 w-4 h-4" /> Download Resume
+              </a>
             </Button>
           </motion.div>
 
