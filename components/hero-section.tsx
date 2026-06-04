@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate } from "framer-motion";
+import { useState } from "react";
+import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { AnimatedCounter } from "@/components/animated-counter";
 import { 
@@ -26,6 +27,82 @@ const stats = [
   { label: "Certifications", value: 5, suffix: "+", icon: Award, color: "text-purple-400" },
   { label: "Internship", value: 1, suffix: "+", icon: Briefcase, color: "text-cyan-400" },
 ];
+
+const PremiumBadge = ({ 
+  icon: Icon, 
+  label, 
+  delay,
+  type
+}: { 
+  icon: any, 
+  label: string, 
+  delay: number,
+  type: 'ai' | 'agent' | 'fullstack'
+}) => {
+  const [isHovered, setIsHovered] = useState(false);
+  
+  const colors = {
+    ai: { border: "hover:border-blue-500/50", glow: "hover:shadow-[0_0_20px_rgba(59,130,246,0.4)]", bg: "hover:bg-blue-500/10", text: "text-blue-400", dot: "bg-green-400", hex: "#3B82F6" },
+    agent: { border: "hover:border-purple-500/50", glow: "hover:shadow-[0_0_20px_rgba(168,85,247,0.4)]", bg: "hover:bg-purple-500/10", text: "text-purple-400", dot: "bg-purple-400", hex: "#A855F7" },
+    fullstack: { border: "hover:border-cyan-500/50", glow: "hover:shadow-[0_0_20px_rgba(6,182,212,0.4)]", bg: "hover:bg-cyan-500/10", text: "text-cyan-400", dot: "bg-blue-400", hex: "#06B6D4" }
+  };
+  const theme = colors[type];
+
+  return (
+    <motion.div
+      animate={{ y: [-3, 3, -3] }}
+      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: delay }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      whileHover={{ scale: 1.05 }}
+      className={`relative flex items-center gap-2 px-3 py-1.5 rounded-xl border border-white/5 bg-[#0f172a]/45 backdrop-blur-[16px] overflow-hidden cursor-default group transition-all duration-300 shadow-[inset_0_0_15px_rgba(255,255,255,0.02)] ${theme.glow} ${theme.bg} ${theme.border}`}
+    >
+      {/* Holographic Sweep */}
+      <div className="absolute inset-0 -translate-x-[150%] bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12 animate-[shine_8s_infinite] pointer-events-none group-hover:hidden" />
+      
+      {/* Energy Border */}
+      <div className={`absolute inset-0 rounded-xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+           style={{ 
+             background: `linear-gradient(90deg, transparent, ${theme.hex}40, transparent)`, 
+             backgroundSize: "200% 100%",
+             animation: isHovered ? "borderFlow 2s linear infinite" : "none" 
+           }} 
+      />
+
+      {/* Particle Emission (Hover) */}
+      <AnimatePresence>
+        {isHovered && type === 'agent' && (
+          <>
+            <motion.div initial={{ opacity: 0, y: 0, x: 0 }} animate={{ opacity: [0, 1, 0], y: -15, x: -10 }} transition={{ duration: 1, repeat: Infinity }} className={`absolute left-4 top-1 w-1 h-1 rounded-full`} style={{ backgroundColor: theme.hex }} />
+            <motion.div initial={{ opacity: 0, y: 0, x: 0 }} animate={{ opacity: [0, 1, 0], y: -10, x: 15 }} transition={{ duration: 1.2, repeat: Infinity, delay: 0.3 }} className={`absolute right-4 top-1 w-1 h-1 rounded-full`} style={{ backgroundColor: theme.hex }} />
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* Active Dot */}
+      <span className="relative flex h-1.5 w-1.5 z-10">
+        <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${theme.dot}`}></span>
+        <span className={`relative inline-flex rounded-full h-1.5 w-1.5 ${theme.dot}`}></span>
+      </span>
+
+      {/* Icon */}
+      <div className="relative z-10">
+        <Icon className={`w-3.5 h-3.5 transition-transform duration-300 group-hover:rotate-12 ${theme.text} ${
+          isHovered && type === 'ai' ? 'animate-pulse' : ''
+        }`} />
+        {/* Full Stack Scanning Light */}
+        {isHovered && type === 'fullstack' && (
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white to-transparent opacity-50 animate-[scan_1.5s_linear_infinite]" />
+        )}
+      </div>
+
+      {/* Label */}
+      <span className="text-xs font-medium text-foreground/80 group-hover:text-foreground transition-colors z-10 relative">
+        {label}
+      </span>
+    </motion.div>
+  );
+};
 
 export function HeroSection() {
   const mouseX = useMotionValue(0);
@@ -118,29 +195,9 @@ export function HeroSection() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex flex-wrap gap-2 mb-6"
           >
-            <motion.div 
-              whileHover={{ scale: 1.05, y: -2 }}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-xl border border-blue-500/30 bg-blue-500/5 backdrop-blur-sm shadow-[0_0_15px_rgba(59,130,246,0.1)] hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:bg-blue-500/10 hover:border-blue-400/50 transition-all cursor-default group"
-            >
-              <Brain className="w-3.5 h-3.5 text-blue-500 dark:text-blue-400 group-hover:animate-pulse" />
-              <span className="text-xs font-medium text-foreground/80 group-hover:text-foreground">AI/ML Engineer</span>
-            </motion.div>
-            
-            <motion.div 
-              whileHover={{ scale: 1.05, y: -2 }}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-xl border border-purple-500/30 bg-purple-500/5 backdrop-blur-sm shadow-[0_0_15px_rgba(168,85,247,0.1)] hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:bg-purple-500/10 hover:border-purple-400/50 transition-all cursor-default group"
-            >
-              <Bot className="w-3.5 h-3.5 text-purple-500 dark:text-purple-400 group-hover:animate-pulse" />
-              <span className="text-xs font-medium text-foreground/80 group-hover:text-foreground">Agentic AI Developer</span>
-            </motion.div>
-            
-            <motion.div 
-              whileHover={{ scale: 1.05, y: -2 }}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-xl border border-cyan-500/30 bg-cyan-500/5 backdrop-blur-sm shadow-[0_0_15px_rgba(6,182,212,0.1)] hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:bg-cyan-500/10 hover:border-cyan-400/50 transition-all cursor-default group"
-            >
-              <Code2 className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400 group-hover:animate-pulse" />
-              <span className="text-xs font-medium text-foreground/80 group-hover:text-foreground">Full-Stack Developer</span>
-            </motion.div>
+            <PremiumBadge icon={Brain} label="AI/ML Engineer" type="ai" delay={0.3} />
+            <PremiumBadge icon={Bot} label="Agentic AI Developer" type="agent" delay={0.4} />
+            <PremiumBadge icon={Code2} label="Full-Stack Developer" type="fullstack" delay={0.5} />
           </motion.div>
 
           <motion.p
