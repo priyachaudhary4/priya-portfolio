@@ -42,7 +42,7 @@ const highlights = [
 
 const stats = [
   { label: "CGPA", value: 8.25, suffix: "", icon: Award, decimals: 2 },
-  { label: "Year", value: 2, suffix: "nd", icon: GraduationCap, decimals: 0 },
+  { label: "Year", value: 3, suffix: "rd", icon: GraduationCap, decimals: 0 },
   { label: "Projects", value: 10, suffix: "+", icon: Briefcase, decimals: 0 },
   { label: "Location", value: "India", icon: MapPin, isText: true },
 ];
@@ -104,7 +104,7 @@ export function AboutSection() {
                 
                 <div className="space-y-5 text-muted-foreground leading-relaxed">
                   <p>
-                    I am a dedicated <span className="text-foreground font-semibold">second-year B.Tech student</span> specializing 
+                    I am a dedicated <span className="text-foreground font-semibold">third-year B.Tech student</span> specializing 
                     in Artificial Intelligence and Data Science at Sri Eshwar College of Engineering, Coimbatore. 
                     My passion lies in developing intelligent systems that bridge the gap between 
                     cutting-edge AI research and practical applications.
