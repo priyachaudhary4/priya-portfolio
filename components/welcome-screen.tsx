@@ -121,9 +121,7 @@ export function WelcomeScreen() {
                 transition={{ duration: 0.5 }}
                 className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-white/10 backdrop-blur-md flex items-center justify-center shadow-[0_0_30px_rgba(59,130,246,0.2)]"
               >
-                <span className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-                  PK
-                </span>
+                <img src="/pkc-logo.png" alt="PKC Logo" className="w-16 h-16 object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]" />
               </motion.div>
             </div>
 
@@ -164,7 +162,7 @@ export function WelcomeScreen() {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
                 </span>
                 <span className="text-xs font-medium text-gray-400 tracking-widest uppercase">
-                  Building Intelligent Systems...
+                  Building Intelligent Solutions for the Future
                 </span>
               </div>
               

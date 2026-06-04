@@ -64,9 +64,7 @@ export function Navigation() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <span className="text-3xl font-black bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent tracking-tighter">
-                PK
-              </span>
+              <img src="/pkc-logo.png" alt="PKC Logo" className="w-12 h-12 object-contain drop-shadow-[0_0_8px_rgba(168,85,247,0.3)] group-hover:scale-105 group-hover:drop-shadow-[0_0_15px_rgba(168,85,247,0.8)] transition-all duration-300" />
               <span className="text-lg font-medium text-foreground/90 hidden sm:block">
                 Priya Kumari Chaudhary
               </span>
