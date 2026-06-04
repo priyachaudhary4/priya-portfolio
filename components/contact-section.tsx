@@ -68,7 +68,8 @@ export function ContactSection() {
                 Send a Message
               </h3>
 
-              <form className="space-y-4">
+              <form action="https://api.web3forms.com/submit" method="POST" className="space-y-4">
+                <input type="hidden" name="access_key" value="27c61724-c095-47d6-92dd-6fa5cbe479ad" />
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label
@@ -79,6 +80,8 @@ export function ContactSection() {
                     </label>
                     <Input
                       id="name"
+                      name="name"
+                      required
                       placeholder="Your name"
                       className="bg-secondary/50 border-border"
                     />
@@ -92,7 +95,9 @@ export function ContactSection() {
                     </label>
                     <Input
                       id="email"
+                      name="email"
                       type="email"
+                      required
                       placeholder="your@email.com"
                       className="bg-secondary/50 border-border"
                     />
@@ -108,6 +113,8 @@ export function ContactSection() {
                   </label>
                   <Input
                     id="subject"
+                    name="subject"
+                    required
                     placeholder="What's this about?"
                     className="bg-secondary/50 border-border"
                   />
@@ -122,6 +129,8 @@ export function ContactSection() {
                   </label>
                   <Textarea
                     id="message"
+                    name="message"
+                    required
                     placeholder="Your message..."
                     rows={5}
                     className="bg-secondary/50 border-border resize-none"
