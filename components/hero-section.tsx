@@ -297,13 +297,6 @@ export function HeroSection() {
               />
             </motion.svg>
 
-            {/* PKC Brand Floating Identity */}
-            <motion.div
-              style={{ x: portraitX, y: orbY }}
-              className="absolute top-[15%] left-[5%] lg:-left-[10%] w-24 h-24 bg-background/30 backdrop-blur-md rounded-2xl border border-white/10 flex items-center justify-center shadow-[0_0_30px_rgba(168,85,247,0.4)] animate-float z-40 pointer-events-none hidden md:flex"
-            >
-              <img src="/pkc-logo.png" alt="PKC Brand" className="w-16 h-16 object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]" />
-            </motion.div>
 
             {/* AI Companion Orb */}
             <motion.div
