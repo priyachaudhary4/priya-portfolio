@@ -2,11 +2,11 @@
 
 import { motion } from "framer-motion";
 import { AnimatedCounter } from "@/components/animated-counter";
-import { 
-  GraduationCap, 
-  MapPin, 
-  Award, 
-  Briefcase, 
+import {
+  GraduationCap,
+  MapPin,
+  Award,
+  Briefcase,
   Target,
   Rocket,
   Code2,
@@ -41,7 +41,7 @@ const highlights = [
 ];
 
 const stats = [
-  { label: "CGPA", value: 8.25, suffix: "", icon: Award, decimals: 2 },
+  { label: "CGPA", value: 8.77, suffix: "", icon: Award, decimals: 2 },
   { label: "Year", value: 3, suffix: "rd", icon: GraduationCap, decimals: 0 },
   { label: "Projects", value: 10, suffix: "+", icon: Briefcase, decimals: 0 },
   { label: "Location", value: "India", icon: MapPin, isText: true },
@@ -54,7 +54,7 @@ export function AboutSection() {
       <div className="absolute inset-0 gradient-bg opacity-50" />
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section header */}
         <motion.div
@@ -64,7 +64,7 @@ export function AboutSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <motion.span 
+          <motion.span
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -93,7 +93,7 @@ export function AboutSection() {
           >
             <div className="premium-card rounded-3xl p-8 md:p-10 relative overflow-hidden h-full card-hover">
               <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-              
+
               <div className="relative z-10">
                 <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
                   <span className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
@@ -101,23 +101,23 @@ export function AboutSection() {
                   </span>
                   Who I Am
                 </h3>
-                
+
                 <div className="space-y-5 text-muted-foreground leading-relaxed">
                   <p>
-                    I am a dedicated <span className="text-foreground font-semibold">third-year B.Tech student</span> specializing 
-                    in Artificial Intelligence and Data Science at Sri Eshwar College of Engineering, Coimbatore. 
-                    My passion lies in developing intelligent systems that bridge the gap between 
+                    I am a dedicated <span className="text-foreground font-semibold">third-year B.Tech student</span> specializing
+                    in Artificial Intelligence and Data Science at Sri Eshwar College of Engineering, Coimbatore.
+                    My passion lies in developing intelligent systems that bridge the gap between
                     cutting-edge AI research and practical applications.
                   </p>
                   <p>
-                    Currently working as an <span className="text-foreground font-semibold">Agentic AI Intern at Aptitude Guru</span>, 
-                    I am gaining hands-on experience in building autonomous AI agents that can 
-                    reason, plan, and execute complex tasks. This role has deepened my understanding 
+                    Currently working as an <span className="text-foreground font-semibold">Agentic AI Intern at Aptitude Guru</span>,
+                    I am gaining hands-on experience in building autonomous AI agents that can
+                    reason, plan, and execute complex tasks. This role has deepened my understanding
                     of large language models, prompt engineering, and agent architectures.
                   </p>
                   <p>
-                    Beyond AI/ML, I have a strong foundation in <span className="text-foreground font-semibold">full-stack development</span> 
-                    using the MERN stack, enabling me to create end-to-end solutions. I believe in the power of technology 
+                    Beyond AI/ML, I have a strong foundation in <span className="text-foreground font-semibold">full-stack development</span>
+                    using the MERN stack, enabling me to create end-to-end solutions. I believe in the power of technology
                     to transform lives and am committed to building products that make a real-world difference.
                   </p>
                 </div>
@@ -125,7 +125,7 @@ export function AboutSection() {
                 {/* Quick highlights */}
                 <div className="mt-8 flex flex-wrap gap-3">
                   {["Python", "TensorFlow", "LangChain", "React", "Node.js", "MongoDB"].map((tech) => (
-                    <span 
+                    <span
                       key={tech}
                       className="px-3 py-1.5 rounded-lg bg-secondary/50 text-sm font-medium text-foreground/80"
                     >
@@ -161,9 +161,9 @@ export function AboutSection() {
                     {stat.isText ? (
                       stat.value
                     ) : (
-                      <AnimatedCounter 
-                        end={stat.value as number} 
-                        suffix={stat.suffix || ""} 
+                      <AnimatedCounter
+                        end={stat.value as number}
+                        suffix={stat.suffix || ""}
                         decimals={stat.decimals || 0}
                       />
                     )}
